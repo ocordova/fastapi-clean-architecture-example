@@ -1,11 +1,15 @@
+# Docker Compose configuration for running tests in CI/CD
+# For local development, tests should run against local PostgreSQL
+# See README.md "Testing" section for local setup instructions
+
 services:
   postgres:
     container_name: postgres-test
     image: postgres:15
     environment:
-      POSTGRES_PASSWORD: tasks
-      POSTGRES_USER: tasks
-      POSTGRES_DB: tasks
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
     ports:
       - 5432:5432
     networks:
