@@ -1,8 +1,23 @@
+import asyncio
+
 import asyncpg
 import pytest
 from tortoise import Tortoise
 
 from api.misc.config import config
+
+
+@pytest.fixture(scope="session")
+def event_loop():
+    """
+    Create an event loop for the test session.
+
+    This fixture is required for pytest-asyncio to work properly
+    with newer versions that don't provide event_loop by default.
+    """
+    loop = asyncio.get_event_loop_policy().new_event_loop()
+    yield loop
+    loop.close()
 
 
 async def drop_database_if_exists():
