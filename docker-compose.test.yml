@@ -15,7 +15,7 @@ services:
     networks:
       - test-network
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U tasks"]
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -27,8 +27,12 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/app
-    env_file:
-      - .env.test
+    environment:
+      ENVIRONMENT: testing
+      POSTGRES_URL: postgres://postgres:postgres@postgres:5432/tasks_db
+      TEST_POSTGRES_BASE_URL: postgres://postgres:postgres@postgres:5432
+      PORT: 8000
+      DEFAULT_API_KEY: dev-test-api-key-12345
     tty: true
     depends_on:
       - postgres

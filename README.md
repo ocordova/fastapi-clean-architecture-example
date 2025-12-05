@@ -462,7 +462,7 @@ When the application is running with `docker compose up`, you can connect to the
 **Connection URL:**
 
 ```
-postgres://tasks:tasks@localhost:5432/tasks_db
+postgres://postgres:postgres@localhost:5432/tasks_db
 ```
 
 **Or use these individual connection parameters:**
@@ -470,13 +470,13 @@ postgres://tasks:tasks@localhost:5432/tasks_db
 - **Host**: `localhost`
 - **Port**: `5432`
 - **Database**: `tasks_db`
-- **User**: `tasks`
-- **Password**: `tasks`
+- **User**: `postgres`
+- **Password**: `postgres`
 
 **Example with psql (command line):**
 
 ```bash
-psql postgres://tasks:tasks@localhost:5432/tasks_db
+psql postgres://postgres:postgres@localhost:5432/tasks_db
 ```
 
 ### Database Migrations with Aerich
