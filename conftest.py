@@ -22,7 +22,7 @@ def event_loop():
 
 async def drop_database_if_exists():
     """Drop the testdb database if it exists."""
-    connection = await asyncpg.connect(dsn=f"{config.TEST_POSTGRES_BASE_URL}/postgres")
+    connection = await asyncpg.connect(dsn=f"{config.TEST_POSTGRES_BASE_URL}/tasks")
 
     # Check if testdb exists
     result = await connection.fetchval(
